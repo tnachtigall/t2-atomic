@@ -32,23 +32,23 @@ dnf5 -y install bolt cups-pk-helper firewalld firewall-config fuse \
   NetworkManager-config-connectivity-fedora steam-devices
 
 #### wayland wm environment
-dnf5 -y install tuned tuned-ppd \
+dnf5 -y install --skip-unavailable tuned tuned-ppd \
   polkit xfce-polkit xdg-user-dirs dbus-tools dbus-daemon \
   wl-clipboard pavucontrol playerctl \
   vulkan-tools gnome-disk-utility ddcutil waycheck wlogout \
   xwayland-satellite fuzzel rofi-wayland nwg-bar wev
 
 #### sound networking etc
-dnf5 -y install helvum network-manager-applet \
+dnf5 -y install --skip-unavailable helvum network-manager-applet \
 NetworkManager-openvpn NetworkManager-openconnect \
 bluez bluez-tools blueman poweralertd #pipewire-utils pipewire-config-raop
 
 #### display
-dnf5 -y install wlr-randr wlsunset brightnessctl swaylock \
+dnf5 -y install --skip-unavailable wlr-randr wlsunset brightnessctl swaylock \
   swayidle kanshi chayang wlopm
 
 #### file manager, screenshot utils, status bar, etc
-dnf5 -y install nautilus thunar thunar-archive-plugin thunar-volman \
+dnf5 -y install --skip-unavailable nautilus thunar thunar-archive-plugin thunar-volman \
   xarchiver imv p7zip unrar gvfs-mtp gvfs-gphoto2 gvfs-smb \
   gvfs-nfs gvfs-fuse gvfs-archive android-tools slurp grim \
   waybar dunst alacritty foot swayimg cups-pdf wf-recorder \
@@ -56,13 +56,13 @@ dnf5 -y install nautilus thunar thunar-archive-plugin thunar-volman \
   papers-thumbnailer
 
 #### cli utils
-dnf5 -y install curl ffmpeg ffmpegthumbnailer fzf rsync zsh unrar-free xz wodim git cdrecord cdda2wav \
+dnf5 -y install --skip-unavailable curl ffmpeg ffmpegthumbnailer fzf rsync zsh unrar-free xz wodim git cdrecord cdda2wav \
   btop greenboot greenboot-default-health-checks fastfetch dmg2img stow vim \
   tmux mc s-tui starship powertop grub2-tools-extra mkisofs wget2 bash-color-prompt
 
 
 #### theming, fonts
-dnf5 -y install adobe-source-code-pro-fonts adwaita-fonts-all \
+dnf5 -y install --skip-unavailable adobe-source-code-pro-fonts adwaita-fonts-all \
   adwaita-gtk2-theme adw-gtk3-theme breeze-icon-theme cascadia-fonts-all \
   cosmic-wallpapers default-fonts desktop-backgrounds-gnome \
   fedora-workstation-backgrounds fontawesome-fonts-all \
@@ -74,7 +74,7 @@ dnf5 -y install adobe-source-code-pro-fonts adwaita-fonts-all \
   # rip f43 mozilla-fira-sans-fonts and mozilla-fira-mono-fonts
 
 #### kansei spin
-dnf5 -y install river xdg-desktop-portal-wlr xdg-desktop-portal-gtk \
+dnf5 -y install --skip-unavailable river xdg-desktop-portal-wlr xdg-desktop-portal-gtk \
   sysprof-cli fedora-easy-karma gcc make libtirpc-devel \
   python3-openidc-client cosmic-store cosmic-files \
   cosmic-edit cosmic-settings cosmic-settings-daemon \
