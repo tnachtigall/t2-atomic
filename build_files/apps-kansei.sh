@@ -86,7 +86,9 @@ dnf5 -y install --skip-unavailable river xdg-desktop-portal-wlr xdg-desktop-port
 dnf5 -y copr enable errornointernet/quickshell
 dnf5 -y copr enable avengemedia/dms
 dnf5 -y copr enable zhangyi6324/noctalia-shell
+dnf5 -y copr enable brycensranch/gpu-screen-recorder-git
 
+dnf5 -y install gpu-screen-recorder-ui
 dnf5 -y install quickshell dms noctalia-shell
 
 dnf5 copr disable errornointernet/quickshell
