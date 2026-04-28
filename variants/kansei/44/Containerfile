@@ -7,7 +7,6 @@ COPY build_files /
 FROM quay.io/fedora/fedora-silverblue:44
 #FROM ghcr.io/ublue-os/bluefin-dx:43
 #FROM ghcr.io/ublue-os/kinoite-main:latest
-export default_tag := env("DEFAULT_TAG", "latest")
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
 # FROM ghcr.io/ublue-os/bluefin-nvidia:stable
