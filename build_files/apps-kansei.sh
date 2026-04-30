@@ -83,18 +83,18 @@ dnf5 -y install --skip-unavailable river xdg-desktop-portal-wlr xdg-desktop-port
   boinc-client boinc-manager xdg-utils
 
 # quickshell package set testing
-dnf5 -y copr enable errornointernet/quickshell
-dnf5 -y copr enable avengemedia/dms
-dnf5 -y copr enable zhangyi6324/noctalia-shell
+#dnf5 -y copr enable errornointernet/quickshell
+#dnf5 -y copr enable avengemedia/dms
+#dnf5 -y copr enable zhangyi6324/noctalia-shell
 #dnf5 -y copr enable brycensranch/gpu-screen-recorder-git
 
 #dnf5 -y install noctalia-qs
-dnf5 -y install --skip-unavailable cava qt6-qtmultimedia i2c-tools wl-clipboard cliphist matugen dgop
-dnf5 -y install dms noctalia-shell
+#dnf5 -y install --skip-unavailable cava qt6-qtmultimedia i2c-tools wl-clipboard cliphist matugen dgop
+#dnf5 -y install dms noctalia-shell
 
-dnf5 copr disable errornointernet/quickshell
-dnf5 copr disable avengemedia/dms
-dnf5 copr disable zhangyi6324/noctalia-shell
+#dnf5 copr disable errornointernet/quickshell
+#dnf5 copr disable avengemedia/dms
+#dnf5 copr disable zhangyi6324/noctalia-shell
 #dnf5 copr disable brycensranch/gpu-screen-recorder-git
 
 dnf5 -y copr enable ublue-os/packages
