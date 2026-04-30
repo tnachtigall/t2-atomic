@@ -88,6 +88,7 @@ dnf5 -y copr enable avengemedia/dms
 dnf5 -y copr enable zhangyi6324/noctalia-shell
 dnf5 -y copr enable brycensranch/gpu-screen-recorder-git
 
+dnf5 -y install noctalia-qs
 dnf5 -y install --skip-unavailable gpu-screen-recorder-ui gpu-screen-recorder-gtk gpu-screen-recorder-notification cava qt6-qtmultimedia i2c-tools wl-clipboard cliphist matugen dgop
 dnf5 -y install dms noctalia-shell
 
