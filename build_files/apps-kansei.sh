@@ -74,7 +74,7 @@ dnf5 -y install --skip-unavailable adobe-source-code-pro-fonts adwaita-fonts-all
   # rip f43 mozilla-fira-sans-fonts and mozilla-fira-mono-fonts
 
 #### kansei spin
-dnf5 -y install --skip-unavailable river xdg-desktop-portal-wlr xdg-desktop-portal-gtk \
+dnf5 -y install --skip-unavailable river-classic xdg-desktop-portal-wlr xdg-desktop-portal-gtk \
   sysprof-cli fedora-easy-karma gcc make libtirpc-devel \
   python3-openidc-client cosmic-store cosmic-files \
   cosmic-edit cosmic-settings cosmic-settings-daemon \
