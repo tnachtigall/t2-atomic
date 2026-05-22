@@ -80,7 +80,7 @@ dnf5 -y install --skip-unavailable river-classic xdg-desktop-portal-wlr xdg-desk
   cosmic-edit cosmic-settings cosmic-settings-daemon \
   topgrade niri wayvnc cosmic-session brasero node-exporter \
   syncthing keyd rocm-opencl rocm-runtime distrobox \
-  boinc-client boinc-manager xdg-utils
+  boinc-client boinc-manager xdg-utils dillo
 
 # quickshell package set testing
 #dnf5 -y copr enable errornointernet/quickshell
