@@ -3,9 +3,10 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM quay.io/fedora/fedora-bootc:43
-#FROM ghcr.io/ublue-os/sway-atomic-main:43
-
+#FROM quay.io/fedora/fedora-bootc:43
+FROM quay.io/fedora/fedora-silverblue:44
+#FROM ghcr.io/ublue-os/bluefin-dx:43
+#FROM ghcr.io/ublue-os/kinoite-main:latest
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
 # FROM ghcr.io/ublue-os/bluefin-nvidia:stable
@@ -26,8 +27,9 @@ COPY --chmod=0644 /variants/common/etc/ /etc/
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
-    --mount=type=tmpfs,dst=/tmp \
-    /ctx/t2-enablement.sh
+    --mount=type=tmpfs,dst=/var \
+    /ctx/t2-enablement-ublue.sh && \
+    rm -rf /tmp/* /var/tmp/*
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
@@ -41,5 +43,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 RUN bootc container lint
 
 # Define required labels for this bootc image to be recognized as such.
+
 LABEL containers.bootc 1
 LABEL ostree.bootable 1

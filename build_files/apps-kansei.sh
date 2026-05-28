@@ -1,4 +1,5 @@
 #!/bin/bash
+ENV LANG=C.UTF-8
 
 set -ouex pipefail
 
@@ -15,48 +16,86 @@ dnf5 -y copr enable alebastr/sway-extras
 dnf5 -y copr enable shdwchn10/AllTheTools
 dnf5 -y copr enable yalter/niri
 dnf5 -y copr enable solopasha/hyprland
+dnf5 -y copr enable alternateved/keyd
 
 #### greeters, login things
 dnf5 -y install greetd greetd-selinux tuigreet gtkgreet seatd
 
+#### basic system things
+dnf5 -y install bolt cups-pk-helper firewalld firewall-config fuse \
+  glibc-langpack-en plymouth-plugin-label plymouth-plugin-two-step \
+  podman-compose podman-machine podman-tui powerstat cockpit-system \
+  cockpit-ostree cockpit-selinux cockpit-networkmanager \
+  system-config-printer thermald zram-generator-defaults gnome-keyring-pam \
+  gnome-keyring libsecret seahorse rtkit time smartmontools-selinux setools-console \
+  sane-backends osbuild-selinux NetworkManager-wifi \
+  NetworkManager-config-connectivity-fedora steam-devices
+
 #### wayland wm environment
-dnf5 -y install tuned tuned-ppd xorg-x11-server-Xwayland \
+dnf5 -y install --skip-unavailable tuned tuned-ppd \
   polkit xfce-polkit xdg-user-dirs dbus-tools dbus-daemon \
-  wl-clipboard pavucontrol playerctl  vulkan-validation-layers \
+  wl-clipboard pavucontrol playerctl \
   vulkan-tools gnome-disk-utility ddcutil waycheck wlogout \
-  xwayland-satellite fuzzel rofi-wayland nwg-bar
+  xwayland-satellite fuzzel rofi-wayland nwg-bar wev darkman
 
 #### sound networking etc
-dnf5 -y install helvum network-manager-applet \
+dnf5 -y install --skip-unavailable helvum network-manager-applet \
 NetworkManager-openvpn NetworkManager-openconnect \
-bluez bluez-tools blueman poweralertd
+bluez bluez-tools blueman poweralertd #pipewire-utils pipewire-config-raop
 
 #### display
-dnf5 -y install wlr-randr wlsunset brightnessctl swaylock \
+dnf5 -y install --skip-unavailable wlr-randr wlsunset brightnessctl swaylock \
   swayidle kanshi chayang wlopm
+
 #### file manager, screenshot utils, status bar, etc
-dnf5 -y install thunar thunar-archive-plugin thunar-volman \
+dnf5 -y install --skip-unavailable nautilus thunar thunar-archive-plugin thunar-volman \
   xarchiver imv p7zip unrar gvfs-mtp gvfs-gphoto2 gvfs-smb \
   gvfs-nfs gvfs-fuse gvfs-archive android-tools slurp grim \
-  waybar dunst alacritty foot swayimg cups-pdf wf-recorder
+  waybar dunst alacritty foot swayimg cups-pdf wf-recorder \
+  SwayNotificationCenter swww papers-nautilus papers-previewer \
+  papers-thumbnailer
+
+#### cli utils
+dnf5 -y install --skip-unavailable curl ffmpeg ffmpegthumbnailer fzf rsync zsh unrar-free xz wodim git cdrecord cdda2wav \
+  btop greenboot greenboot-default-health-checks fastfetch dmg2img stow vim \
+  tmux mc s-tui starship powertop grub2-tools-extra mkisofs wget2 bash-color-prompt
+
 
 #### theming, fonts
-dnf5 -y install fontawesome-fonts-all gnome-themes-extra \
-  gnome-icon-theme paper-icon-theme breeze-icon-theme \
-  papirus-icon-theme google-noto-emoji-fonts \
-  SwayNotificationCenter swww cascadia-fonts-all \
-  jetbrains-mono-fonts-all ibm-plex-fonts-all \
-  adwaita-gtk2-theme adw-gtk3-theme qt5-qtwayland qt6-qtwayland
+dnf5 -y install --skip-unavailable adobe-source-code-pro-fonts adwaita-fonts-all \
+  adwaita-gtk2-theme adw-gtk3-theme breeze-icon-theme cascadia-fonts-all \
+  cosmic-wallpapers default-fonts desktop-backgrounds-gnome \
+  fedora-workstation-backgrounds fontawesome-fonts-all \
+  google-noto-color-emoji-fonts google-noto-emoji-fonts \
+  gnome-themes-extra gnome-icon-theme ibm-plex-fonts-all \
+  jetbrains-mono-fonts-all paper-icon-theme  \
+  papirus-icon-theme plymouth-theme-spinner plymouth-system-theme \
+  qt5-qtwayland qt6-qtwayland sway-wallpapers \
   # rip f43 mozilla-fira-sans-fonts and mozilla-fira-mono-fonts
 
 #### kansei spin
-dnf5 -y install river xdg-desktop-portal-wlr xdg-desktop-portal-gtk \
-  s-tui mc powertop sysprof-cli tmux vim fedora-easy-karma gcc make \
-  libtirpc-devel python3-openidc-client cosmic-store cosmic-files \
-   cosmic-edit cosmic-settings cosmic-settings-daemon dmg2img stow \
-   topgrade niri wayvnc unrar cosmic-session cosmic-wallpapers \
-   fastfetch sway-wallpapers wodim brasero node-exporter btop syncthing \
-   greenboot-default-health-checks greenboot
+dnf5 -y install --skip-unavailable river-classic xdg-desktop-portal-wlr xdg-desktop-portal-gtk \
+  sysprof-cli fedora-easy-karma gcc make libtirpc-devel \
+  python3-openidc-client cosmic-store cosmic-files \
+  cosmic-edit cosmic-settings cosmic-settings-daemon \
+  topgrade niri wayvnc cosmic-session brasero node-exporter \
+  syncthing keyd rocm-opencl rocm-runtime distrobox \
+  boinc-client boinc-manager xdg-utils dillo
+
+# quickshell package set testing
+#dnf5 -y copr enable errornointernet/quickshell
+#dnf5 -y copr enable avengemedia/dms
+#dnf5 -y copr enable zhangyi6324/noctalia-shell
+#dnf5 -y copr enable brycensranch/gpu-screen-recorder-git
+
+#dnf5 -y install noctalia-qs
+#dnf5 -y install --skip-unavailable cava qt6-qtmultimedia i2c-tools wl-clipboard cliphist matugen dgop
+#dnf5 -y install dms noctalia-shell
+
+#dnf5 copr disable errornointernet/quickshell
+#dnf5 copr disable avengemedia/dms
+#dnf5 copr disable zhangyi6324/noctalia-shell
+#dnf5 copr disable brycensranch/gpu-screen-recorder-git
 
 dnf5 -y copr enable ublue-os/packages
 dnf5 -y config-manager setopt copr:copr.fedorainfracloud.org:ublue-os:packages.enabled=0
@@ -81,3 +120,5 @@ dnf5 -y copr disable shdwchn10/AllTheTools
 dnf5 -y copr disable yalter/niri
 dnf5 -y copr disable kylegospo/webapp-manager
 dnf5 -y copr disable solopasha/hyprland
+dnf5 -y copr disable alternateved/keyd
+dnf5 -y copr disable ublue-os/packages

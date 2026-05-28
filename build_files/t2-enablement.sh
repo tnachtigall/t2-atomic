@@ -35,6 +35,7 @@ rpm-ostree cliwrap install-to-root / && \
     kernel kernel-core \
     kernel-modules kernel-modules-core \
     kernel-modules-extra \
+    kernel-devel-matched \
 
 dnf5 -y install t2fanrd t2linux-release #per sharpenedblade this will continue as the metapackage to include all the t2 parts
 rm -f /usr/share/pipewire/pipewire.conf.d/raop.conf
@@ -47,7 +48,7 @@ dnf5 -y copr disable sharpenedblade/t2linux
 # installing some packages for full support of apple hardware,
 # like sg3_utils to support USB superdrive slot load operation,
 # and cli apps to access hardware sensors
-dnf5 install -y lm_sensors sg3_utils wodim xorriso radeontop
+dnf5 install -y lm_sensors sg3_utils wodim xorriso radeontop libinput libinput-utils
 
 mkdir -p /lib/firmware/brcm
 tar -xf /ctx/common/radio.tar -C /lib/firmware/brcm

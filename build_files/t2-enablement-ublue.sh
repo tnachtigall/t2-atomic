@@ -21,7 +21,8 @@ dnf5 -y install dnf5-plugins python3-jsonschema
 dnf5 -y copr enable sharpenedblade/t2linux
 dnf5 -y remove kmod-framework-laptop \
     kmod-openrazer kmod-xone \
-    kernel-modules-akmods kmod-v4l2loopback
+    kernel-modules-akmods kmod-v4l2loopback \
+    kernel-headers
 #dnf5 -y remove kernel-uki-virt kernel-tools kernel-tools-libs kernel-modules-extra kernel-headers
 #dnf5 -y versionlock delete kernel kernel-core kernel-modules \
 #  kernel-headers kernel-modules-core kernel-tools kernel-tools-libs
@@ -51,7 +52,7 @@ dnf5 -y copr disable sharpenedblade/t2linux
 # installing some packages for full support of apple hardware,
 # like sg3_utils to support USB superdrive slot load operation,
 # and cli apps to access hardware sensors
-dnf5 install -y lm_sensors sg3_utils wodim xorriso radeontop
+dnf5 install -y lm_sensors sg3_utils wodim xorriso radeontop libinput libinput-utils
 
 # install IWD and radio software
 # iwd as backend seems to work better than wpa_supplicant on this hardware
