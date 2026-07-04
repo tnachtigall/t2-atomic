@@ -37,7 +37,6 @@ fi
 rpm-ostree cliwrap install-to-root / && \
     rpm-ostree override replace --experimental --freeze \
     --from repo=copr:copr.fedorainfracloud.org:tnachtigall:t2-mpx-patches \
-    kernel-uki-virt \
     kernel kernel-core \
     kernel-modules kernel-modules-core \
     kernel-modules-extra \
@@ -50,7 +49,7 @@ rm -f /usr/share/pipewire/pipewire.conf.d/raop.conf
 # remove packages from fedora image macs don't need
 dnf5 -y remove tiwilink-firmware nxpwireless-firmware nvidia-gpu-firmware mt7xxx-firmware iwlegacy-firmware \
   iwlwifi-dvm-firmware iwlwifi-mvm-firmware qcom-wwan-firmware
-  
+
 dnf5 -y copr disable sharpenedblade/t2linux
 dnf5 -y copr disable tnachtigall/t2-mpx-patches
 
