@@ -18,7 +18,10 @@ set -ouex pipefail
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/
 dnf5 -y install dnf5-plugins python3-jsonschema
+
 dnf5 -y copr enable sharpenedblade/t2linux
+dnf5 -y copr enable tnachtigall/t2-mpx-patches # my patched kernel for mpx module support on T2 macs
+
 dnf5 -y remove kmod-framework-laptop \
     kmod-openrazer kmod-xone \
     kernel-modules-akmods kmod-v4l2loopback \
@@ -33,7 +36,7 @@ fi
 #  kernel-modules kernel-tools kernel-tools-libs
 rpm-ostree cliwrap install-to-root / && \
     rpm-ostree override replace --experimental --freeze \
-    --from repo=copr:copr.fedorainfracloud.org:sharpenedblade:t2linux \
+    --from repo=copr:copr.fedorainfracloud.org:tnachtigall:t2-mpx-patches \
     kernel-uki-virt \
     kernel kernel-core \
     kernel-modules kernel-modules-core \
@@ -47,7 +50,9 @@ rm -f /usr/share/pipewire/pipewire.conf.d/raop.conf
 # remove packages from fedora image macs don't need
 dnf5 -y remove tiwilink-firmware nxpwireless-firmware nvidia-gpu-firmware mt7xxx-firmware iwlegacy-firmware \
   iwlwifi-dvm-firmware iwlwifi-mvm-firmware qcom-wwan-firmware
+  
 dnf5 -y copr disable sharpenedblade/t2linux
+dnf5 -y copr disable tnachtigall/t2-mpx-patches
 
 # installing some packages for full support of apple hardware,
 # like sg3_utils to support USB superdrive slot load operation,
